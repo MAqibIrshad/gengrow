@@ -2,14 +2,12 @@ import { auth } from '@clerk/nextjs/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
-type Progress = Promise<{
-  courseId: string
-  chapterId: string
-}>
-
-export async function PUT(req: NextRequest, { params }: { params: Progress }) {
+export async function PUT(
+  req: NextRequest,
+  { params }: { params: { courseId: string; chapterId: string } }
+) {
   try {
-    const { chapterId } = await params
+    const { chapterId } = params
     const { userId } = await auth()
     const { isCompleted } = await req.json()
 
@@ -24,7 +22,8 @@ export async function PUT(req: NextRequest, { params }: { params: Progress }) {
     })
 
     return NextResponse.json(userProgress)
-  } catch {
+  } catch (error) {
+    console.error('[USER_PROGRESS_UPDATE]', error)
     return new NextResponse('Internal server error', { status: 500 })
   }
 }
