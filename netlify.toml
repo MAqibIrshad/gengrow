@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  # For Next.js on Netlify, the publish directory is usually `.next` 
+  # if using @netlify/next plugin, otherwise Netlify handles it differently.
+
+[dev]
+  command = "npm run dev"
+  port = 3000
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
