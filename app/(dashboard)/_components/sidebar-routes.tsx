@@ -1,6 +1,6 @@
 'use client'
 
-import { BarChart, Compass, Layout, List, Brain, Send } from 'lucide-react'
+import { BarChart, Compass, Layout, List, Brain, Send, Headset} from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { SidebarItem } from './sidebar-item'
 
@@ -21,6 +21,23 @@ const guestRoutes = [
     label: 'Discussion',
     href: '/search',
 
+  },
+
+  {
+    icon:ScrollText,
+    label:'Keep',
+    href: '/keep'
+  },
+
+  {
+    icon:BrainCircuit,
+    label: 'Deep',
+    href: '/deep'
+  },
+  {
+    icon: 
+    label: 'Notification',
+    href: '/notify'
   }
 ]
 
@@ -42,12 +59,14 @@ const teacherRoutes = [
     href: '/teacher/quizagent'
   },
 
-
   {
-    icon: Brain,
-    label: 'Open Thread',
-    href: '/teacher/thread'
+    icon:Headset,
+    label: 'Meet',
+    href: '/meet'
   },
+  {
+
+  }
 ]
 
 export const SidebarRoutes = () => {
